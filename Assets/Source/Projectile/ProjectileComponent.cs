@@ -2,6 +2,6 @@
 using Entitas.CodeGeneration.Attributes;
 
 [Game, Event(EventTarget.Self)]
-public sealed class CameraComponent : IComponent
+public sealed class ProjectileComponent : IComponent
 {
 }

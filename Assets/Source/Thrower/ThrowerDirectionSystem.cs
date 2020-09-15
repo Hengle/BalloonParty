@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class ThrowerDirectionSystem : IExecuteSystem
 {
-    private Contexts _contexts;
-    private IGroup<GameEntity> _throwers;
-    private IGroup<GameEntity> _cameras;
+    private readonly Contexts _contexts;
+    private readonly IGroup<GameEntity> _throwers;
+    private readonly IGroup<GameEntity> _cameras;
 
     public ThrowerDirectionSystem(Contexts contexts)
     {

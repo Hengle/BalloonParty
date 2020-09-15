@@ -6,7 +6,7 @@ using UnityEngine;
 public class ThrowerSpawnSystem : ReactiveSystem<GameEntity>, ILinkedViewListener
 {
     private readonly Contexts _contexts;
-    private IGameConfiguration _configuration;
+    private readonly IGameConfiguration _configuration;
 
     public ThrowerSpawnSystem(Contexts contexts) : base(contexts.game)
     {

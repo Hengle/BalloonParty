@@ -4,8 +4,8 @@ using UnityEngine;
 public class ThrowerRotationSystem : IExecuteSystem
 {
     private Contexts _contexts;
-    private IGroup<GameEntity> _throwers;
-    private IGroup<GameEntity> _cameras;
+    private readonly IGroup<GameEntity> _throwers;
+    private readonly IGroup<GameEntity> _cameras;
 
     public ThrowerRotationSystem(Contexts contexts)
     {

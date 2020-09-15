@@ -2,6 +2,6 @@
 using Entitas.CodeGeneration.Attributes;
 
 [Game, Unique, Event(EventTarget.Self)]
-public class ReadyToThrowComponent : IComponent
+public sealed class ReadyToThrowComponent : IComponent
 {
 }

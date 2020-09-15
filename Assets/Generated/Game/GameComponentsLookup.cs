@@ -28,18 +28,20 @@ public static class GameComponentsLookup {
     public const int MovableRemovedListener = 17;
     public const int Position = 18;
     public const int PositionListener = 19;
-    public const int ReadyToThrow = 20;
-    public const int ReadyToThrowListener = 21;
-    public const int Rotation = 22;
-    public const int RotationListener = 23;
-    public const int Scale = 24;
-    public const int ScaleListener = 25;
-    public const int Tag = 26;
-    public const int TagListener = 27;
-    public const int Thrower = 28;
-    public const int ThrowerListener = 29;
+    public const int Projectile = 20;
+    public const int ProjectileListener = 21;
+    public const int ReadyToThrow = 22;
+    public const int ReadyToThrowListener = 23;
+    public const int Rotation = 24;
+    public const int RotationListener = 25;
+    public const int Scale = 26;
+    public const int ScaleListener = 27;
+    public const int Tag = 28;
+    public const int TagListener = 29;
+    public const int Thrower = 30;
+    public const int ThrowerListener = 31;
 
-    public const int TotalComponents = 30;
+    public const int TotalComponents = 32;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
@@ -62,6 +64,8 @@ public static class GameComponentsLookup {
         "MovableRemovedListener",
         "Position",
         "PositionListener",
+        "Projectile",
+        "ProjectileListener",
         "ReadyToThrow",
         "ReadyToThrowListener",
         "Rotation",
@@ -95,6 +99,8 @@ public static class GameComponentsLookup {
         typeof(MovableRemovedListenerComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(ProjectileComponent),
+        typeof(ProjectileListenerComponent),
         typeof(ReadyToThrowComponent),
         typeof(ReadyToThrowListenerComponent),
         typeof(RotationComponent),

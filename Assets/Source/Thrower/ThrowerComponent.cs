@@ -2,6 +2,6 @@
 using Entitas.CodeGeneration.Attributes;
 
 [Game, Unique, Event(EventTarget.Self)]
-public class ThrowerComponent : IComponent
+public sealed class ThrowerComponent : IComponent
 {
 }
