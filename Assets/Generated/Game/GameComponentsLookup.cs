@@ -11,27 +11,78 @@ public static class GameComponentsLookup {
     public const int AnyGameEventListener = 0;
     public const int AnyGameStartedListener = 1;
     public const int Asset = 2;
-    public const int GameEvent = 3;
-    public const int GameStarted = 4;
-    public const int LinkedView = 5;
+    public const int Destroyed = 3;
+    public const int DestroyedListener = 4;
+    public const int GameEvent = 5;
+    public const int GameStarted = 6;
+    public const int Layer = 7;
+    public const int LayerListener = 8;
+    public const int LinkedView = 9;
+    public const int Movable = 10;
+    public const int MovableListener = 11;
+    public const int MovableRemovedListener = 12;
+    public const int Position = 13;
+    public const int PositionListener = 14;
+    public const int Rotation = 15;
+    public const int RotationListener = 16;
+    public const int Scale = 17;
+    public const int ScaleListener = 18;
+    public const int Tag = 19;
+    public const int TagListener = 20;
+    public const int Thrower = 21;
+    public const int ThrowerListener = 22;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
         "AnyGameStartedListener",
         "Asset",
+        "Destroyed",
+        "DestroyedListener",
         "GameEvent",
         "GameStarted",
-        "LinkedView"
+        "Layer",
+        "LayerListener",
+        "LinkedView",
+        "Movable",
+        "MovableListener",
+        "MovableRemovedListener",
+        "Position",
+        "PositionListener",
+        "Rotation",
+        "RotationListener",
+        "Scale",
+        "ScaleListener",
+        "Tag",
+        "TagListener",
+        "Thrower",
+        "ThrowerListener"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(AnyGameEventListenerComponent),
         typeof(AnyGameStartedListenerComponent),
         typeof(AssetComponent),
+        typeof(DestroyedComponent),
+        typeof(DestroyedListenerComponent),
         typeof(GameEventComponent),
         typeof(GameStartedComponent),
-        typeof(LinkedViewComponent)
+        typeof(LayerComponent),
+        typeof(LayerListenerComponent),
+        typeof(LinkedViewComponent),
+        typeof(MovableComponent),
+        typeof(MovableListenerComponent),
+        typeof(MovableRemovedListenerComponent),
+        typeof(PositionComponent),
+        typeof(PositionListenerComponent),
+        typeof(RotationComponent),
+        typeof(RotationListenerComponent),
+        typeof(ScaleComponent),
+        typeof(ScaleListenerComponent),
+        typeof(TagComponent),
+        typeof(TagListenerComponent),
+        typeof(ThrowerComponent),
+        typeof(ThrowerListenerComponent)
     };
 }

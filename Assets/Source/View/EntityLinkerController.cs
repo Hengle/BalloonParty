@@ -1,28 +1,28 @@
-﻿//using Entitas;
+﻿using Entitas;
 
-//public class EntityLinkerController : LinkedViewController
-//{
-//    protected Contexts _contexts;
+public class EntityLinkerController : LinkedViewController
+{
+    protected Contexts _contexts;
 
-//    private void Start()
-//    {
-//        _contexts = Contexts.sharedInstance;
-//        var e = _contexts.game.CreateEntity();
+    private void Start()
+    {
+        _contexts = Contexts.sharedInstance;
+        var e = _contexts.game.CreateEntity();
 
-//        DefineEntity(e);
-//        Link(e);
-//    }
+        DefineEntity(e);
+        Link(e);
+    }
 
-//    protected virtual void DefineEntity(IEntity e)
-//    {
-//        if (!(e is GameEntity)) return;
+    protected virtual void DefineEntity(IEntity e)
+    {
+        if (!(e is GameEntity)) return;
 
-//        var gameEntity = (GameEntity) e;
+        var gameEntity = (GameEntity) e;
 
-//        gameEntity.AddPosition(transform.localPosition);
-//        gameEntity.AddRotation(transform.localRotation);
-//        gameEntity.AddScale(transform.localScale);
-//        gameEntity.AddLayer(gameObject.layer);
-//        gameEntity.AddTag(gameObject.tag);
-//    }
-//}
+        gameEntity.AddPosition(transform.localPosition);
+        gameEntity.AddRotation(transform.localRotation);
+        gameEntity.AddScale(transform.localScale);
+        gameEntity.AddLayer(gameObject.layer);
+        gameEntity.AddTag(gameObject.tag);
+    }
+}
