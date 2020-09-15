@@ -10,22 +10,28 @@ public static class GameComponentsLookup {
 
     public const int AnyGameEventListener = 0;
     public const int AnyGameStartedListener = 1;
-    public const int GameEvent = 2;
-    public const int GameStarted = 3;
+    public const int Asset = 2;
+    public const int GameEvent = 3;
+    public const int GameStarted = 4;
+    public const int LinkedView = 5;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
         "AnyGameStartedListener",
+        "Asset",
         "GameEvent",
-        "GameStarted"
+        "GameStarted",
+        "LinkedView"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(AnyGameEventListenerComponent),
         typeof(AnyGameStartedListenerComponent),
+        typeof(AssetComponent),
         typeof(GameEventComponent),
-        typeof(GameStartedComponent)
+        typeof(GameStartedComponent),
+        typeof(LinkedViewComponent)
     };
 }
