@@ -11,7 +11,7 @@ public class AssetInstancingSystem : ReactiveSystem<GameEntity>
     private readonly Contexts _contexts;
 
     /// <summary>
-    /// All instaces will be set as children of this transform
+    /// All instances will be set as children of this transform
     /// </summary>
     private readonly Transform _parent;
 
