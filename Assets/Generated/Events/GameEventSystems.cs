@@ -13,6 +13,7 @@ public sealed class GameEventSystems : Feature {
         Add(new AnyGameEventEventSystem(contexts)); // priority: 0
         Add(new AnyGameStartedEventSystem(contexts)); // priority: 0
         Add(new LayerEventSystem(contexts)); // priority: 0
+        Add(new LinkedViewEventSystem(contexts)); // priority: 0
         Add(new MovableEventSystem(contexts)); // priority: 0
         Add(new MovableRemovedEventSystem(contexts)); // priority: 0
         Add(new PositionEventSystem(contexts)); // priority: 0

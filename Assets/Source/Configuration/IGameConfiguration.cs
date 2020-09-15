@@ -4,4 +4,5 @@ using UnityEngine;
 [Configuration, Unique, ComponentName("GameConfiguration")]
 public interface IGameConfiguration
 {
+    Vector2 ThrowerSpawnPoint { get; }
 }

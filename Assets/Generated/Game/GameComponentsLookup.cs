@@ -18,21 +18,22 @@ public static class GameComponentsLookup {
     public const int Layer = 7;
     public const int LayerListener = 8;
     public const int LinkedView = 9;
-    public const int Movable = 10;
-    public const int MovableListener = 11;
-    public const int MovableRemovedListener = 12;
-    public const int Position = 13;
-    public const int PositionListener = 14;
-    public const int Rotation = 15;
-    public const int RotationListener = 16;
-    public const int Scale = 17;
-    public const int ScaleListener = 18;
-    public const int Tag = 19;
-    public const int TagListener = 20;
-    public const int Thrower = 21;
-    public const int ThrowerListener = 22;
+    public const int LinkedViewListener = 10;
+    public const int Movable = 11;
+    public const int MovableListener = 12;
+    public const int MovableRemovedListener = 13;
+    public const int Position = 14;
+    public const int PositionListener = 15;
+    public const int Rotation = 16;
+    public const int RotationListener = 17;
+    public const int Scale = 18;
+    public const int ScaleListener = 19;
+    public const int Tag = 20;
+    public const int TagListener = 21;
+    public const int Thrower = 22;
+    public const int ThrowerListener = 23;
 
-    public const int TotalComponents = 23;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
@@ -45,6 +46,7 @@ public static class GameComponentsLookup {
         "Layer",
         "LayerListener",
         "LinkedView",
+        "LinkedViewListener",
         "Movable",
         "MovableListener",
         "MovableRemovedListener",
@@ -71,6 +73,7 @@ public static class GameComponentsLookup {
         typeof(LayerComponent),
         typeof(LayerListenerComponent),
         typeof(LinkedViewComponent),
+        typeof(LinkedViewListenerComponent),
         typeof(MovableComponent),
         typeof(MovableListenerComponent),
         typeof(MovableRemovedListenerComponent),
