@@ -8,6 +8,7 @@ TagManager:
   - LimitRight
   - LimitBottom
   - LimitLeft
+  - UICamera
   layers:
   - Default
   - TransparentFX

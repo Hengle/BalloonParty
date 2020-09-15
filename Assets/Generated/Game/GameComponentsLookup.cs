@@ -11,36 +11,46 @@ public static class GameComponentsLookup {
     public const int AnyGameEventListener = 0;
     public const int AnyGameStartedListener = 1;
     public const int Asset = 2;
-    public const int Destroyed = 3;
-    public const int DestroyedListener = 4;
-    public const int GameEvent = 5;
-    public const int GameStarted = 6;
-    public const int Layer = 7;
-    public const int LayerListener = 8;
-    public const int LinkedView = 9;
-    public const int LinkedViewListener = 10;
-    public const int Movable = 11;
-    public const int MovableListener = 12;
-    public const int MovableRemovedListener = 13;
-    public const int Position = 14;
-    public const int PositionListener = 15;
-    public const int Rotation = 16;
-    public const int RotationListener = 17;
-    public const int Scale = 18;
-    public const int ScaleListener = 19;
-    public const int Tag = 20;
-    public const int TagListener = 21;
-    public const int Thrower = 22;
-    public const int ThrowerListener = 23;
+    public const int Camera = 3;
+    public const int CameraListener = 4;
+    public const int Destroyed = 5;
+    public const int DestroyedListener = 6;
+    public const int Direction = 7;
+    public const int DirectionListener = 8;
+    public const int GameEvent = 9;
+    public const int GameStarted = 10;
+    public const int Layer = 11;
+    public const int LayerListener = 12;
+    public const int LinkedView = 13;
+    public const int LinkedViewListener = 14;
+    public const int Movable = 15;
+    public const int MovableListener = 16;
+    public const int MovableRemovedListener = 17;
+    public const int Position = 18;
+    public const int PositionListener = 19;
+    public const int ReadyToThrow = 20;
+    public const int ReadyToThrowListener = 21;
+    public const int Rotation = 22;
+    public const int RotationListener = 23;
+    public const int Scale = 24;
+    public const int ScaleListener = 25;
+    public const int Tag = 26;
+    public const int TagListener = 27;
+    public const int Thrower = 28;
+    public const int ThrowerListener = 29;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 30;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
         "AnyGameStartedListener",
         "Asset",
+        "Camera",
+        "CameraListener",
         "Destroyed",
         "DestroyedListener",
+        "Direction",
+        "DirectionListener",
         "GameEvent",
         "GameStarted",
         "Layer",
@@ -52,6 +62,8 @@ public static class GameComponentsLookup {
         "MovableRemovedListener",
         "Position",
         "PositionListener",
+        "ReadyToThrow",
+        "ReadyToThrowListener",
         "Rotation",
         "RotationListener",
         "Scale",
@@ -66,8 +78,12 @@ public static class GameComponentsLookup {
         typeof(AnyGameEventListenerComponent),
         typeof(AnyGameStartedListenerComponent),
         typeof(AssetComponent),
+        typeof(CameraComponent),
+        typeof(CameraListenerComponent),
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
+        typeof(DirectionComponent),
+        typeof(DirectionListenerComponent),
         typeof(GameEventComponent),
         typeof(GameStartedComponent),
         typeof(LayerComponent),
@@ -79,6 +95,8 @@ public static class GameComponentsLookup {
         typeof(MovableRemovedListenerComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(ReadyToThrowComponent),
+        typeof(ReadyToThrowListenerComponent),
         typeof(RotationComponent),
         typeof(RotationListenerComponent),
         typeof(ScaleComponent),

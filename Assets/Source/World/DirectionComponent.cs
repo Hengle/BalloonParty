@@ -3,7 +3,7 @@ using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 [Event(EventTarget.Self)]
-public sealed class PositionComponent : IComponent
+public sealed class DirectionComponent : IComponent
 {
     public Vector3 Value;
 }

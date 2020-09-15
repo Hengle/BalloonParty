@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470d5420d203a354388f0723fa8d4c9f, type: 3}
   m_Name: GameConfiguration
   m_EditorClassIdentifier: 
+  _throwerSpawnPoint: {x: 0, y: -4.5}

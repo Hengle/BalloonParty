@@ -42,7 +42,19 @@ public class ThrowerSpawnSystem : ReactiveSystem<GameEntity>, ILinkedViewListene
 
         if (mono != null)
         {
-            mono.transform.DOMove(_configuration.ThrowerSpawnPoint, 1f);
+            var tween = mono.transform.DOMove(_configuration.ThrowerSpawnPoint, 1f);
+
+            tween.onUpdate += () =>
+            {
+                entity.ReplacePosition(mono.transform.position);
+            };
+
+            tween.onComplete += () =>
+            {
+                entity.isReadyToThrow = true;
+            };
         }
+
+        entity.RemoveLinkedViewListener(this);
     }
 }
