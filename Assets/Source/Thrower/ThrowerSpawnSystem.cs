@@ -51,7 +51,8 @@ public class ThrowerSpawnSystem : ReactiveSystem<GameEntity>, ILinkedViewListene
 
             tween.onComplete += () =>
             {
-                entity.isReadyToThrow = true;
+                entity.isMovable = true;
+                entity.isReadyToLoad = true;
             };
         }
 

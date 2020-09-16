@@ -6,6 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface ICameraListener {
-    void OnCamera(GameEntity entity, UnityEngine.Camera value);
+public interface IReadyToLoadListener {
+    void OnReadyToLoad(GameEntity entity);
 }

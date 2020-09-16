@@ -10,9 +10,7 @@ public class ThrowerDirectionSystem : IExecuteSystem
     public ThrowerDirectionSystem(Contexts contexts)
     {
         _contexts = contexts;
-
-        // throwers
-        _throwers = _contexts.game.GetGroup(GameMatcher.Thrower);
+        _throwers = _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Thrower, GameMatcher.Movable));
         _cameras = _contexts.game.GetGroup(GameMatcher.Camera);
     }
 
@@ -24,9 +22,7 @@ public class ThrowerDirectionSystem : IExecuteSystem
 
         foreach (var entity in _cameras)
         {
-            var camera = (entity.linkedView.Value as MonoBehaviour)?.GetComponent<Camera>();
-
-            if (camera == null) return;
+            var camera = entity.camera.Value;
 
             foreach (var thrower in _throwers)
             {
@@ -35,12 +31,6 @@ public class ThrowerDirectionSystem : IExecuteSystem
                 var direction = (mousePos - screenPos).normalized;
 
                 thrower.ReplaceDirection(direction);
-
-                if (thrower.isReadyToThrow)
-                {
-                    var angle = Vector3.Angle(direction, Vector3.right) - 90;
-                    thrower.ReplaceRotation(Quaternion.AngleAxis(angle, Vector3.forward));
-                }
 #if UNITY_EDITOR
                 Debug.DrawRay(pos, direction, Color.magenta);
 #endif

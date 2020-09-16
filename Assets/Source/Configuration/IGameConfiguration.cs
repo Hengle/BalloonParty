@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IGameConfiguration
 {
     Vector2 ThrowerSpawnPoint { get; }
+
+    Vector2 ProjectileSpawnPoint { get; }
 }

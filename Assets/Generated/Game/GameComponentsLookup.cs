@@ -23,25 +23,28 @@ public static class GameComponentsLookup {
     public const int LayerListener = 12;
     public const int LinkedView = 13;
     public const int LinkedViewListener = 14;
-    public const int Movable = 15;
-    public const int MovableListener = 16;
-    public const int MovableRemovedListener = 17;
-    public const int Position = 18;
-    public const int PositionListener = 19;
-    public const int Projectile = 20;
-    public const int ProjectileListener = 21;
-    public const int ReadyToThrow = 22;
-    public const int ReadyToThrowListener = 23;
-    public const int Rotation = 24;
-    public const int RotationListener = 25;
-    public const int Scale = 26;
-    public const int ScaleListener = 27;
-    public const int Tag = 28;
-    public const int TagListener = 29;
-    public const int Thrower = 30;
-    public const int ThrowerListener = 31;
+    public const int LoadedProjectile = 15;
+    public const int Movable = 16;
+    public const int MovableListener = 17;
+    public const int MovableRemovedListener = 18;
+    public const int Position = 19;
+    public const int PositionListener = 20;
+    public const int Projectile = 21;
+    public const int ProjectileListener = 22;
+    public const int ReadyToLoad = 23;
+    public const int ReadyToLoadListener = 24;
+    public const int ReadyToThrow = 25;
+    public const int ReadyToThrowListener = 26;
+    public const int Rotation = 27;
+    public const int RotationListener = 28;
+    public const int Scale = 29;
+    public const int ScaleListener = 30;
+    public const int Tag = 31;
+    public const int TagListener = 32;
+    public const int Thrower = 33;
+    public const int ThrowerListener = 34;
 
-    public const int TotalComponents = 32;
+    public const int TotalComponents = 35;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
@@ -59,6 +62,7 @@ public static class GameComponentsLookup {
         "LayerListener",
         "LinkedView",
         "LinkedViewListener",
+        "LoadedProjectile",
         "Movable",
         "MovableListener",
         "MovableRemovedListener",
@@ -66,6 +70,8 @@ public static class GameComponentsLookup {
         "PositionListener",
         "Projectile",
         "ProjectileListener",
+        "ReadyToLoad",
+        "ReadyToLoadListener",
         "ReadyToThrow",
         "ReadyToThrowListener",
         "Rotation",
@@ -94,6 +100,7 @@ public static class GameComponentsLookup {
         typeof(LayerListenerComponent),
         typeof(LinkedViewComponent),
         typeof(LinkedViewListenerComponent),
+        typeof(LoadedProjectileComponent),
         typeof(MovableComponent),
         typeof(MovableListenerComponent),
         typeof(MovableRemovedListenerComponent),
@@ -101,6 +108,8 @@ public static class GameComponentsLookup {
         typeof(PositionListenerComponent),
         typeof(ProjectileComponent),
         typeof(ProjectileListenerComponent),
+        typeof(ReadyToLoadComponent),
+        typeof(ReadyToLoadListenerComponent),
         typeof(ReadyToThrowComponent),
         typeof(ReadyToThrowListenerComponent),
         typeof(RotationComponent),

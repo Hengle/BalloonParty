@@ -6,31 +6,31 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed class CameraEventSystem : Entitas.ReactiveSystem<GameEntity> {
+public sealed class ReadyToLoadEventSystem : Entitas.ReactiveSystem<GameEntity> {
 
-    readonly System.Collections.Generic.List<ICameraListener> _listenerBuffer;
+    readonly System.Collections.Generic.List<IReadyToLoadListener> _listenerBuffer;
 
-    public CameraEventSystem(Contexts contexts) : base(contexts.game) {
-        _listenerBuffer = new System.Collections.Generic.List<ICameraListener>();
+    public ReadyToLoadEventSystem(Contexts contexts) : base(contexts.game) {
+        _listenerBuffer = new System.Collections.Generic.List<IReadyToLoadListener>();
     }
 
     protected override Entitas.ICollector<GameEntity> GetTrigger(Entitas.IContext<GameEntity> context) {
         return Entitas.CollectorContextExtension.CreateCollector(
-            context, Entitas.TriggerOnEventMatcherExtension.Added(GameMatcher.Camera)
+            context, Entitas.TriggerOnEventMatcherExtension.Added(GameMatcher.ReadyToLoad)
         );
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.hasCamera && entity.hasCameraListener;
+        return entity.isReadyToLoad && entity.hasReadyToLoadListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<GameEntity> entities) {
         foreach (var e in entities) {
-            var component = e.camera;
+            
             _listenerBuffer.Clear();
-            _listenerBuffer.AddRange(e.cameraListener.value);
+            _listenerBuffer.AddRange(e.readyToLoadListener.value);
             foreach (var listener in _listenerBuffer) {
-                listener.OnCamera(e, component.Value);
+                listener.OnReadyToLoad(e);
             }
         }
     }

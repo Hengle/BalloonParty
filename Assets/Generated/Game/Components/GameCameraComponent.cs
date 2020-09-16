@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly CameraComponent cameraComponent = new CameraComponent();
+    public CameraComponent camera { get { return (CameraComponent)GetComponent(GameComponentsLookup.Camera); } }
+    public bool hasCamera { get { return HasComponent(GameComponentsLookup.Camera); } }
 
-    public bool isCamera {
-        get { return HasComponent(GameComponentsLookup.Camera); }
-        set {
-            if (value != isCamera) {
-                var index = GameComponentsLookup.Camera;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : cameraComponent;
+    public void AddCamera(UnityEngine.Camera newValue) {
+        var index = GameComponentsLookup.Camera;
+        var component = (CameraComponent)CreateComponent(index, typeof(CameraComponent));
+        component.Value = newValue;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceCamera(UnityEngine.Camera newValue) {
+        var index = GameComponentsLookup.Camera;
+        var component = (CameraComponent)CreateComponent(index, typeof(CameraComponent));
+        component.Value = newValue;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveCamera() {
+        RemoveComponent(GameComponentsLookup.Camera);
     }
 }
 
