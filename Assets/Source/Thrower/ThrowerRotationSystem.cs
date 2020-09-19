@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class ThrowerRotationSystem : IExecuteSystem
 {
-    private Contexts _contexts;
+    private readonly Contexts _contexts;
     private readonly IGroup<GameEntity> _throwers;
 
     public ThrowerRotationSystem(Contexts contexts)
     {
         _contexts = contexts;
-
-        // throwers
-        _throwers = _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Thrower, GameMatcher.Movable));
+       
+        _throwers = _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Thrower, GameMatcher.Movable,
+            GameMatcher.Direction));
     }
 
     public void Execute()

@@ -19,6 +19,9 @@ public class LoadedProjectileTransformSystem : IExecuteSystem
         foreach (var projectile in _projectiles)
         {
             var thrower = _contexts.game.throwerEntity;
+
+            if (!thrower.hasDirection) continue;
+
             var angle = Vector3.Angle(thrower.direction.Value, Vector3.right) - 90;
 
             var point = _configuration.ProjectileSpawnPoint;

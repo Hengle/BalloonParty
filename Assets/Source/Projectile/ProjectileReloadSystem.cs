@@ -50,14 +50,12 @@ public class ProjectileReloadSystem : ReactiveSystem<GameEntity>, ILinkedViewLis
             var tween = mono.transform.DOScale(Vector3.one, 1f);
             thrower.isReadyToLoad = false;
 
-            tween.onUpdate += () =>
-            {
-                entity.ReplaceScale(mono.transform.localScale);
-            };
+            tween.onUpdate += () => { entity.ReplaceScale(mono.transform.localScale); };
 
             tween.onComplete += () =>
             {
                 thrower.isReadyToThrow = true;
+                thrower.ReplaceThrowerLoadedProjectile(entity);
             };
         }
 

@@ -24,6 +24,7 @@ public sealed class GameEventSystems : Feature {
         Add(new ReadyToThrowEventSystem(contexts)); // priority: 0
         Add(new RotationEventSystem(contexts)); // priority: 0
         Add(new ScaleEventSystem(contexts)); // priority: 0
+        Add(new SpeedEventSystem(contexts)); // priority: 0
         Add(new TagEventSystem(contexts)); // priority: 0
         Add(new ThrowerEventSystem(contexts)); // priority: 0
     }

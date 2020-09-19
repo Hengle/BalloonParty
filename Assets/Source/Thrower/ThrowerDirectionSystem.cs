@@ -18,6 +18,8 @@ public class ThrowerDirectionSystem : IExecuteSystem
     {
         var mousePos = Input.mousePosition;
 
+        if (!Input.GetMouseButton(0)) return;
+
         if (_cameras.count <= 0) return;
 
         foreach (var entity in _cameras)

@@ -17,34 +17,38 @@ public static class GameComponentsLookup {
     public const int DestroyedListener = 6;
     public const int Direction = 7;
     public const int DirectionListener = 8;
-    public const int GameEvent = 9;
-    public const int GameStarted = 10;
-    public const int Layer = 11;
-    public const int LayerListener = 12;
-    public const int LinkedView = 13;
-    public const int LinkedViewListener = 14;
-    public const int LoadedProjectile = 15;
-    public const int Movable = 16;
-    public const int MovableListener = 17;
-    public const int MovableRemovedListener = 18;
-    public const int Position = 19;
-    public const int PositionListener = 20;
-    public const int Projectile = 21;
-    public const int ProjectileListener = 22;
-    public const int ReadyToLoad = 23;
-    public const int ReadyToLoadListener = 24;
-    public const int ReadyToThrow = 25;
-    public const int ReadyToThrowListener = 26;
-    public const int Rotation = 27;
-    public const int RotationListener = 28;
-    public const int Scale = 29;
-    public const int ScaleListener = 30;
-    public const int Tag = 31;
-    public const int TagListener = 32;
-    public const int Thrower = 33;
-    public const int ThrowerListener = 34;
+    public const int FreeProjectile = 9;
+    public const int GameEvent = 10;
+    public const int GameStarted = 11;
+    public const int Layer = 12;
+    public const int LayerListener = 13;
+    public const int LinkedView = 14;
+    public const int LinkedViewListener = 15;
+    public const int LoadedProjectile = 16;
+    public const int Movable = 17;
+    public const int MovableListener = 18;
+    public const int MovableRemovedListener = 19;
+    public const int Position = 20;
+    public const int PositionListener = 21;
+    public const int Projectile = 22;
+    public const int ProjectileListener = 23;
+    public const int ReadyToLoad = 24;
+    public const int ReadyToLoadListener = 25;
+    public const int ReadyToThrow = 26;
+    public const int ReadyToThrowListener = 27;
+    public const int Rotation = 28;
+    public const int RotationListener = 29;
+    public const int Scale = 30;
+    public const int ScaleListener = 31;
+    public const int Speed = 32;
+    public const int SpeedListener = 33;
+    public const int Tag = 34;
+    public const int TagListener = 35;
+    public const int Thrower = 36;
+    public const int ThrowerListener = 37;
+    public const int ThrowerLoadedProjectile = 38;
 
-    public const int TotalComponents = 35;
+    public const int TotalComponents = 39;
 
     public static readonly string[] componentNames = {
         "AnyGameEventListener",
@@ -56,6 +60,7 @@ public static class GameComponentsLookup {
         "DestroyedListener",
         "Direction",
         "DirectionListener",
+        "FreeProjectile",
         "GameEvent",
         "GameStarted",
         "Layer",
@@ -78,10 +83,13 @@ public static class GameComponentsLookup {
         "RotationListener",
         "Scale",
         "ScaleListener",
+        "Speed",
+        "SpeedListener",
         "Tag",
         "TagListener",
         "Thrower",
-        "ThrowerListener"
+        "ThrowerListener",
+        "ThrowerLoadedProjectile"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -94,6 +102,7 @@ public static class GameComponentsLookup {
         typeof(DestroyedListenerComponent),
         typeof(DirectionComponent),
         typeof(DirectionListenerComponent),
+        typeof(FreeProjectileComponent),
         typeof(GameEventComponent),
         typeof(GameStartedComponent),
         typeof(LayerComponent),
@@ -116,9 +125,12 @@ public static class GameComponentsLookup {
         typeof(RotationListenerComponent),
         typeof(ScaleComponent),
         typeof(ScaleListenerComponent),
+        typeof(SpeedComponent),
+        typeof(SpeedListenerComponent),
         typeof(TagComponent),
         typeof(TagListenerComponent),
         typeof(ThrowerComponent),
-        typeof(ThrowerListenerComponent)
+        typeof(ThrowerListenerComponent),
+        typeof(ThrowerLoadedProjectileComponent)
     };
 }
