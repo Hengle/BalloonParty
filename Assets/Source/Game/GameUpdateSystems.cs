@@ -10,7 +10,7 @@ public class GameUpdateSystems : Feature
         // movement
         Add(new ThrowerDirectionSystem(contexts));
         Add(new ThrowerRotationSystem(contexts));
-        Add(new LoadedProjectileTransformSystem(contexts));
+        Add(new ProjectileTransformSystem(contexts));
         Add(new ThrowLoadedProjectileSystem(contexts));
         Add(new FreeProjectileMovementSystem(contexts));
 

@@ -4,7 +4,7 @@ using Entitas.Unity;
 using UnityEngine;
 
 public class LinkedViewController : MonoBehaviour, IUnityTransform, IPositionListener, IRotationListener,
-    IScaleListener, IDestroyedListener, ILayerListener, ITagListener
+    IScaleListener, IDestroyedListener, ILayerListener, ITagListener, IUpListener, IRightListener, IForwardListener
 {
     public IEntity LinkedEntity { get; private set; }
     public Action<GameEntity> OnViewLinked { get; set; }
@@ -27,6 +27,24 @@ public class LinkedViewController : MonoBehaviour, IUnityTransform, IPositionLis
         set => transform.localScale = value;
     }
 
+    public Vector3 Up
+    {
+        get => transform.up;
+        set => transform.up = value;
+    }
+
+    public Vector3 Right
+    {
+        get => transform.right;
+        set => transform.right = value;
+    }
+
+    public Vector3 Forward
+    {
+        get => transform.forward;
+        set => transform.forward = value;
+    }
+
 
     public void Link(IEntity entity)
     {
@@ -41,6 +59,9 @@ public class LinkedViewController : MonoBehaviour, IUnityTransform, IPositionLis
         HandlePosition(gameEntity);
         HandleScale(gameEntity);
         HandleRotation(gameEntity);
+        HandleUp(gameEntity);
+        HandleRight(gameEntity);
+        HandleForward(gameEntity);
         HandleLayer(gameEntity);
         HandleTag(gameEntity);
 
@@ -49,12 +70,17 @@ public class LinkedViewController : MonoBehaviour, IUnityTransform, IPositionLis
 
     private void HandleListeners(GameEntity gameEntity)
     {
-        gameEntity.AddDestroyedListener(this);
         gameEntity.AddPositionListener(this);
         gameEntity.AddRotationListener(this);
         gameEntity.AddScaleListener(this);
+
+        gameEntity.AddUpListener(this);
+        gameEntity.AddRightListener(this);
+        gameEntity.AddForwardListener(this);
+
         gameEntity.AddLayerListener(this);
         gameEntity.AddTagListener(this);
+        gameEntity.AddDestroyedListener(this);
     }
 
     private void HandleTag(GameEntity gameEntity)
@@ -117,6 +143,42 @@ public class LinkedViewController : MonoBehaviour, IUnityTransform, IPositionLis
         }
     }
 
+    private void HandleUp(GameEntity gameEntity)
+    {
+        if (gameEntity.hasUp)
+        {
+            transform.up = gameEntity.up.Value;
+        }
+        else
+        {
+            gameEntity.AddUp(transform.up);
+        }
+    }
+
+    private void HandleRight(GameEntity gameEntity)
+    {
+        if (gameEntity.hasRight)
+        {
+            transform.right = gameEntity.right.Value;
+        }
+        else
+        {
+            gameEntity.AddRight(transform.right);
+        }
+    }
+
+    private void HandleForward(GameEntity gameEntity)
+    {
+        if (gameEntity.hasForward)
+        {
+            transform.forward = gameEntity.forward.Value;
+        }
+        else
+        {
+            gameEntity.AddForward(transform.forward);
+        }
+    }
+
     public void OnPosition(GameEntity entity, Vector3 value)
     {
         transform.localPosition = value;
@@ -148,5 +210,20 @@ public class LinkedViewController : MonoBehaviour, IUnityTransform, IPositionLis
     public void OnTag(GameEntity entity, string value)
     {
         gameObject.tag = value;
+    }
+
+    public void OnUp(GameEntity entity, Vector3 value)
+    {
+        transform.up = value;
+    }
+
+    public void OnRight(GameEntity entity, Vector3 value)
+    {
+        transform.right = value;
+    }
+
+    public void OnForward(GameEntity entity, Vector3 value)
+    {
+        transform.forward = value;
     }
 }

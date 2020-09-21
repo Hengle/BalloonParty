@@ -12,6 +12,7 @@ public sealed class GameEventSystems : Feature {
         Add(new CameraEventSystem(contexts)); // priority: 0
         Add(new DestroyedEventSystem(contexts)); // priority: 0
         Add(new DirectionEventSystem(contexts)); // priority: 0
+        Add(new ForwardEventSystem(contexts)); // priority: 0
         Add(new AnyGameEventEventSystem(contexts)); // priority: 0
         Add(new AnyGameStartedEventSystem(contexts)); // priority: 0
         Add(new LayerEventSystem(contexts)); // priority: 0
@@ -22,10 +23,14 @@ public sealed class GameEventSystems : Feature {
         Add(new ProjectileEventSystem(contexts)); // priority: 0
         Add(new ReadyToLoadEventSystem(contexts)); // priority: 0
         Add(new ReadyToThrowEventSystem(contexts)); // priority: 0
+        Add(new RightEventSystem(contexts)); // priority: 0
         Add(new RotationEventSystem(contexts)); // priority: 0
         Add(new ScaleEventSystem(contexts)); // priority: 0
         Add(new SpeedEventSystem(contexts)); // priority: 0
         Add(new TagEventSystem(contexts)); // priority: 0
         Add(new ThrowerEventSystem(contexts)); // priority: 0
+        Add(new TriggerEnter2DEventSystem(contexts)); // priority: 0
+        Add(new TriggerExit2DEventSystem(contexts)); // priority: 0
+        Add(new UpEventSystem(contexts)); // priority: 0
     }
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _throwerSpawnPoint: {x: 0, y: -4.5}
   _projectileSpawnPoint: {x: 0, y: -4.1}
+  _projectileSpeed: 7.5
