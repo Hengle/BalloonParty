@@ -3,9 +3,11 @@ public class GameUpdateSystems : Feature
     public GameUpdateSystems(Contexts contexts)
     {
         // initialization
-        Add(new ThrowerSpawnSystem(contexts));
+        Add(new GameStartedThrowerSpawnSystem(contexts));
+        Add(new GameStartedBalloonsSpawnSystem(contexts));
         Add(new AssetInstancingSystem(contexts));
         Add(new ProjectileReloadSystem(contexts));
+        Add(new BalloonLineSpawnerSystem(contexts));
 
         // movement
         Add(new ThrowerDirectionSystem(contexts));

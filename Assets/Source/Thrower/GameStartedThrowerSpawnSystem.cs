@@ -3,12 +3,12 @@ using DG.Tweening;
 using Entitas;
 using UnityEngine;
 
-public class ThrowerSpawnSystem : ReactiveSystem<GameEntity>, ILinkedViewListener
+public class GameStartedThrowerSpawnSystem : ReactiveSystem<GameEntity>, ILinkedViewListener
 {
     private readonly Contexts _contexts;
     private readonly IGameConfiguration _configuration;
 
-    public ThrowerSpawnSystem(Contexts contexts) : base(contexts.game)
+    public GameStartedThrowerSpawnSystem(Contexts contexts) : base(contexts.game)
     {
         _contexts = contexts;
         _configuration = _contexts.configuration.gameConfiguration.value;

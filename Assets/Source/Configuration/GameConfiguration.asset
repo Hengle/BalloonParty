@@ -15,3 +15,4 @@ MonoBehaviour:
   _throwerSpawnPoint: {x: 0, y: -4.5}
   _projectileSpawnPoint: {x: 0, y: -4.1}
   _projectileSpeed: 7.5
+  _limitsClockwise: {x: 4.5, y: 2.25, z: -4.5, w: -2.25}
