@@ -12,13 +12,15 @@ public class ProjectileBounceSystem : IExecuteSystem
     {
         _contexts = contexts;
         _configuration = _contexts.configuration.gameConfiguration.value;
-        _freeProjectiles = _contexts.game.GetGroup(GameMatcher.FreeProjectile);
+        _freeProjectiles =
+            _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.FreeProjectile, GameMatcher.ProjectileBounceShield));
     }
 
     public void Execute()
     {
-        foreach (var freeProjectile in _freeProjectiles)
+        foreach (var freeProjectile in _freeProjectiles.GetEntities())
         {
+            var shield = freeProjectile.projectileBounceShield.Value;
             var position = freeProjectile.position.Value;
             var direction = freeProjectile.direction.Value;
             var reflect = Vector3.zero;
@@ -45,6 +47,20 @@ public class ProjectileBounceSystem : IExecuteSystem
             if (position.x < _configuration.LimitsClockwise.w)
             {
                 reflect += Vector3.right;
+            }
+
+            // the projectile has bounced, consume a shield
+            if (reflect != Vector3.zero)
+            {
+                if (shield > 0)
+                {
+                    freeProjectile.ReplaceProjectileBounceShield(shield - 1);
+                }
+                else
+                {
+                    freeProjectile.isDestroyed = true;
+                    continue;
+                }
             }
 
             freeProjectile.ReplaceDirection(Vector2.Reflect(direction, reflect.normalized));
