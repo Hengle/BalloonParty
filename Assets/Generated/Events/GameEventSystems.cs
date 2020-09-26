@@ -21,6 +21,7 @@ public sealed class GameEventSystems : Feature {
         Add(new MovableRemovedEventSystem(contexts)); // priority: 0
         Add(new PositionEventSystem(contexts)); // priority: 0
         Add(new ProjectileEventSystem(contexts)); // priority: 0
+        Add(new ProjectileBounceShieldEventSystem(contexts)); // priority: 0
         Add(new ReadyToLoadEventSystem(contexts)); // priority: 0
         Add(new ReadyToThrowEventSystem(contexts)); // priority: 0
         Add(new RightEventSystem(contexts)); // priority: 0

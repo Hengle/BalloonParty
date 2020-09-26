@@ -26,6 +26,7 @@ public class ThrowLoadedProjectileSystem : IExecuteSystem
                 pEntity.ReplaceSpeed(_configuration.ProjectileSpeed);
                 pEntity.isLoadedProjectile = false;
                 pEntity.isFreeProjectile = true;
+                pEntity.AddProjectileBounceShield(1);
 
                 // remove loaded projectile
                 thrower.RemoveThrowerLoadedProjectile();

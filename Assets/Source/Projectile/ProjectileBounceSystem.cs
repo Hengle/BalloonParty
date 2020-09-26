@@ -2,51 +2,63 @@
 using Entitas;
 using UnityEngine;
 
-public class ProjectileBounceSystem : ReactiveSystem<GameEntity>
+public class ProjectileBounceSystem : IExecuteSystem
 {
     private readonly Contexts _contexts;
-    private string _lastCollision;
+    private readonly IGameConfiguration _configuration;
+    private readonly IGroup<GameEntity> _freeProjectiles;
 
-    public ProjectileBounceSystem(Contexts contexts) : base(contexts.game)
+    public ProjectileBounceSystem(Contexts contexts)
     {
         _contexts = contexts;
+        _configuration = _contexts.configuration.gameConfiguration.value;
+        _freeProjectiles = _contexts.game.GetGroup(GameMatcher.FreeProjectile);
     }
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    public void Execute()
     {
-        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.FreeProjectile, GameMatcher.TriggerEnter2D));
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.isFreeProjectile && entity.hasTriggerEnter2D;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach (var gameEntity in entities)
+        foreach (var freeProjectile in _freeProjectiles)
         {
-            var collider = gameEntity.triggerEnter2D.Value;
-            var direction = gameEntity.direction.Value;
+            var position = freeProjectile.position.Value;
+            var direction = freeProjectile.direction.Value;
             var reflect = Vector3.zero;
 
-            switch (collider.tag)
+            // top limit
+            if (position.y > _configuration.LimitsClockwise.x)
             {
-                case "LimitLeft":
-                    reflect = Vector3.right;
-                    break;
-                case "LimitRight":
-                    reflect = Vector3.left;
-                    break;
-                case "LimitTop":
-                    reflect = Vector3.down;
-                    break;
-                case "LimitBottom":
-                    reflect = Vector3.up;
-                    break;
+                reflect += Vector3.down;
             }
 
-            gameEntity.ReplaceDirection(Vector2.Reflect(direction, reflect));
+            // right limit
+            if (position.x > _configuration.LimitsClockwise.y)
+            {
+                reflect += Vector3.left;
+            }
+
+            // bottom limit
+            if (position.y < _configuration.LimitsClockwise.z)
+            {
+                reflect += Vector3.up;
+            }
+
+            // left limit
+            if (position.x < _configuration.LimitsClockwise.w)
+            {
+                reflect += Vector3.right;
+            }
+
+            freeProjectile.ReplaceDirection(Vector2.Reflect(direction, reflect.normalized));
         }
+
+#if UNITY_EDITOR
+        Debug.DrawLine(Vector3.up * _configuration.LimitsClockwise.x + Vector3.right * 100,
+            Vector3.up * _configuration.LimitsClockwise.x - Vector3.right * 100, Color.red);
+        Debug.DrawLine(Vector3.right * _configuration.LimitsClockwise.y + Vector3.up * 100,
+            Vector3.right * _configuration.LimitsClockwise.y - Vector3.up * 100, Color.red);
+        Debug.DrawLine(Vector3.up * _configuration.LimitsClockwise.z + Vector3.right * 100,
+            Vector3.up * _configuration.LimitsClockwise.z - Vector3.right * 100, Color.red);
+        Debug.DrawLine(Vector3.right * _configuration.LimitsClockwise.w + Vector3.up * 100,
+            Vector3.right * _configuration.LimitsClockwise.w - Vector3.up * 100, Color.red);
+#endif
     }
 }
