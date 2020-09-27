@@ -7,8 +7,8 @@ using UnityEngine;
 /// This single component indexes game entities into slot
 /// entity instances for faster lookup
 /// </summary>
-[Game, Unique]
-public class SlotIndexerComponent : IComponent
+[Unique]
+public class SlotsIndexerComponent : IComponent
 {
-    public Dictionary<Vector2Int, IEntity> Value;
+    public IEntity[,] Value;
 }

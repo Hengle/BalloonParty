@@ -18,39 +18,37 @@ public class SloIndexerSystem : ReactiveSystem<GameEntity>, IDestroyedListener
 
         // create indexer
         _indexerEntity = _contexts.game.CreateEntity();
-        _indexerEntity.AddSlotIndexer(new Dictionary<Vector2Int, IEntity>());
+        _indexerEntity.AddSlotsIndexer(new IEntity[7, 7]);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.SlotIndexingEvent);
+        return context.CreateCollector(GameMatcher.SlotIndex);
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasSlotIndexingEvent;
+        return entity.hasSlotIndex;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
         foreach (var gameEntity in entities)
         {
-            _indexerEntity.slotIndexer.Value[gameEntity.slotIndexingEvent.Value] = gameEntity;
+            var val = gameEntity.slotIndex.Value;
+            _indexerEntity.slotsIndexer.Value[val.x, val.y] = gameEntity;
 
             // in case its destroyed
             gameEntity.AddDestroyedListener(this);
         }
     }
 
+    /// <summary>
+    /// Cleans up the indexer reference when the entity is destroyed
+    /// </summary>
+    /// <param name="entity"></param>
     public void OnDestroyed(GameEntity entity)
     {
-        // clean up indexer
-        foreach (var keyValuePair in _indexerEntity.slotIndexer.Value.ToList())
-        {
-            if (keyValuePair.Value == null || !keyValuePair.Value.isEnabled)
-            {
-                _indexerEntity.slotIndexer.Value.Remove(keyValuePair.Key);
-            }
-        }
+        
     }
 }

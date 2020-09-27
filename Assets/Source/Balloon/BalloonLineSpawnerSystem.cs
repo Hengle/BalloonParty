@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>
 {
@@ -26,10 +27,17 @@ public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>
     {
         foreach (var gameEntity in entities)
         {
-            var e = _contexts.game.CreateEntity();
-            e.isBalloon = true;
+            var bottomSlotsIndexes = _contexts.game.BottomSlotsIndexes();
 
-            e.AddAsset("Balloon");
+            foreach (Vector2Int index in bottomSlotsIndexes)
+            {
+                var e = _contexts.game.CreateEntity();
+                e.isBalloon = true;
+                e.AddSlotIndex(index);
+
+                // create balloon asset instance
+                e.AddAsset("Balloon");
+            }
         }
     }
 }

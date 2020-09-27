@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 public class GameStartedBalloonsSpawnSystem : ReactiveSystem<GameEntity>
 {
@@ -24,10 +25,7 @@ public class GameStartedBalloonsSpawnSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        for (int i = 0; i < 3; i++)
-        {
-            var e = _contexts.game.CreateEntity();
-            e.isBalloonLineInstanceEvent = true;
-        }
+        var e = _contexts.game.CreateEntity();
+        e.isBalloonLineInstanceEvent = true;
     }
 }

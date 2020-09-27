@@ -2,8 +2,8 @@
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
-[Game, Event(EventTarget.Any)]
-public class SlotIndexingEventComponent : IComponent
+[Game, Event(EventTarget.Self)]
+public class SlotIndexComponent : IComponent
 {
     public Vector2Int Value;
 }
