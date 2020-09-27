@@ -11,6 +11,9 @@ public class GameConfiguration : ScriptableObject, IGameConfiguration
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private Vector4 _limitsClockwise;
 
+    [Header("Slots")] [SerializeField] private Vector2 _slotSeparation;
+    [SerializeField] private Vector2 _slotsOffset;
+
     public Vector2 ThrowerSpawnPoint => _throwerSpawnPoint;
 
     public Vector2 ProjectileSpawnPoint => _projectileSpawnPoint;
@@ -18,4 +21,8 @@ public class GameConfiguration : ScriptableObject, IGameConfiguration
     public float ProjectileSpeed => _projectileSpeed;
 
     public Vector4 LimitsClockwise => _limitsClockwise;
+
+    public Vector2 SlotSeparation => _slotSeparation;
+
+    public Vector2 SlotsOffset => _slotsOffset;
 }

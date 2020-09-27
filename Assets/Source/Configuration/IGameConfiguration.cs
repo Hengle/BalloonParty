@@ -10,4 +10,6 @@ public interface IGameConfiguration
     float ProjectileSpeed { get; }
 
     Vector4 LimitsClockwise { get; }
+    Vector2 SlotSeparation { get; }
+    Vector2 SlotsOffset { get; }
 }

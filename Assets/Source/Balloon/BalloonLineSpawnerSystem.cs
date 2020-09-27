@@ -34,6 +34,7 @@ public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>
                 var e = _contexts.game.CreateEntity();
                 e.isBalloon = true;
                 e.AddSlotIndex(index);
+                e.AddPosition(index.IndexToPosition(_configuration));
 
                 // create balloon asset instance
                 e.AddAsset("Balloon");

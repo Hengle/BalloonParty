@@ -18,4 +18,16 @@ public static class GameContextExtensions
             }
         }
     }
+
+    public static Vector3 IndexToPosition(this Vector2Int slot, IGameConfiguration configuration)
+    {
+        var position = new Vector3
+        (
+            (slot.x - configuration.SlotsOffset.x) * configuration.SlotSeparation.x - configuration.SlotSeparation.x / 2f,
+            slot.y * configuration.SlotSeparation.y + configuration.SlotsOffset.y,
+            0
+        );
+
+        return position;
+    }
 }
