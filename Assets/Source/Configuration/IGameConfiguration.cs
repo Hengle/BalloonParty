@@ -14,4 +14,6 @@ public interface IGameConfiguration
     Vector2 BalloonSpawnAnimationSpeedRange { get; }
     float GameStartedBalloonLinesTimeInterval { get; }
     int GameStartedBalloonLines { get; }
+
+    Color[] BalloonColors { get; }
 }

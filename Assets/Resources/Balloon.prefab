@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869202998299313772}
   - component: {fileID: 5157140582475098680}
+  - component: {fileID: 2086207780223055126}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -127,6 +128,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4532930072aa9634093d0408710a6d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2086207780223055126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531284375457732990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5899ddb8446f42449b788c7dcf36830f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 264100499786580991}
+  _shadowRenderer: {fileID: 4475536555041591237}
+  _shadowAlpha: 0.3
 --- !u!1 &4971000064207652389
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +295,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 68df258c65fc9e2438725ceba3244797, type: 3}
-  m_Color: {r: 0.99215686, g: 0.9254902, b: 0.7647059, a: 0.5019608}
+  m_Color: {r: 0.99215686, g: 0.99215686, b: 0.8904608, a: 0.6}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
