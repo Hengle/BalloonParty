@@ -8,17 +8,19 @@ using UnityEngine;
 /// </summary>
 public class SloIndexerSystem : ReactiveSystem<GameEntity>, IDestroyedListener
 {
-    readonly Contexts _contexts;
+    private readonly IGameConfiguration _configuration;
+    private readonly Contexts _contexts;
 
     private GameEntity _indexerEntity;
 
     public SloIndexerSystem(Contexts contexts) : base(contexts.game)
     {
         _contexts = contexts;
+        _configuration = _contexts.configuration.gameConfiguration.value;
 
         // create indexer
         _indexerEntity = _contexts.game.CreateEntity();
-        _indexerEntity.AddSlotsIndexer(new IEntity[7, 7]);
+        _indexerEntity.AddSlotsIndexer(new IEntity[_configuration.SlotsSize.x, _configuration.SlotsSize.y]);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

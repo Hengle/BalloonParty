@@ -44,10 +44,7 @@ public class GameStartedThrowerSpawnSystem : ReactiveSystem<GameEntity>, ILinked
         {
             var tween = mono.transform.DOMove(_configuration.ThrowerSpawnPoint, 1f);
 
-            tween.onUpdate += () =>
-            {
-                entity.ReplacePosition(mono.transform.position);
-            };
+            tween.onUpdate += () => { entity.ReplacePosition(mono.transform.position); };
 
             tween.onComplete += () =>
             {

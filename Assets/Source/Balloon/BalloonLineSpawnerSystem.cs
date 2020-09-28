@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using Entitas;
 using UnityEngine;
 
-public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>
+public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>, ILinkedViewListener
 {
     private readonly Contexts _contexts;
     private readonly IGameConfiguration _configuration;
@@ -34,11 +36,40 @@ public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>
                 var e = _contexts.game.CreateEntity();
                 e.isBalloon = true;
                 e.AddSlotIndex(index);
-                e.AddPosition(index.IndexToPosition(_configuration));
+                e.AddScale(Vector3.zero);
+
+                // positioning for animation
+                var initialPos = (index + Vector2Int.up * 4).IndexToPosition(_configuration);
+                e.AddPosition(initialPos);
 
                 // create balloon asset instance
                 e.AddAsset("Balloon");
+                e.AddLinkedViewListener(this);
             }
         }
+
+        foreach (var gameEntity in entities.ToList())
+        {
+            gameEntity.Destroy();
+        }
+    }
+
+    public void OnLinkedView(GameEntity entity, ILinkedView value)
+    {
+        var mono = value as MonoBehaviour;
+
+        if (mono != null)
+        {
+            var time = Random.Range(_configuration.BalloonSpawnAnimationSpeedRange.x,
+                _configuration.BalloonSpawnAnimationSpeedRange.y);
+
+            var positionTween = mono.transform.DOMove(entity.slotIndex.Value.IndexToPosition(_configuration), time);
+            var scaleTween = mono.transform.DOScale(Vector3.one, time);
+
+            positionTween.onUpdate += () => { entity.ReplacePosition(mono.transform.position); };
+            scaleTween.onUpdate += () => { entity.ReplaceScale(mono.transform.localScale); };
+        }
+
+        entity.RemoveLinkedViewListener(this);
     }
 }

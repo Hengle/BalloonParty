@@ -5,11 +5,13 @@ using UnityEngine;
 public interface IGameConfiguration
 {
     Vector2 ThrowerSpawnPoint { get; }
-
     Vector2 ProjectileSpawnPoint { get; }
     float ProjectileSpeed { get; }
-
     Vector4 LimitsClockwise { get; }
+    Vector2Int SlotsSize { get; }
     Vector2 SlotSeparation { get; }
     Vector2 SlotsOffset { get; }
+    Vector2 BalloonSpawnAnimationSpeedRange { get; }
+    float GameStartedBalloonLinesTimeInterval { get; }
+    int GameStartedBalloonLines { get; }
 }

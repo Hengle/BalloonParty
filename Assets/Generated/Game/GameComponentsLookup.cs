@@ -16,57 +16,58 @@ public static class GameComponentsLookup {
     public const int BalloonLineInstanceEvent = 5;
     public const int Camera = 6;
     public const int CameraListener = 7;
-    public const int Destroyed = 8;
-    public const int DestroyedListener = 9;
-    public const int Direction = 10;
-    public const int DirectionListener = 11;
-    public const int Forward = 12;
-    public const int ForwardListener = 13;
-    public const int FreeProjectile = 14;
-    public const int GameEvent = 15;
-    public const int GameStarted = 16;
-    public const int Layer = 17;
-    public const int LayerListener = 18;
-    public const int LinkedView = 19;
-    public const int LinkedViewListener = 20;
-    public const int LoadedProjectile = 21;
-    public const int Movable = 22;
-    public const int MovableListener = 23;
-    public const int MovableRemovedListener = 24;
-    public const int Position = 25;
-    public const int PositionListener = 26;
-    public const int ProjectileBounceShield = 27;
-    public const int ProjectileBounceShieldListener = 28;
-    public const int Projectile = 29;
-    public const int ProjectileListener = 30;
-    public const int ReadyToLoad = 31;
-    public const int ReadyToLoadListener = 32;
-    public const int ReadyToThrow = 33;
-    public const int ReadyToThrowListener = 34;
-    public const int Right = 35;
-    public const int RightListener = 36;
-    public const int Rotation = 37;
-    public const int RotationListener = 38;
-    public const int Scale = 39;
-    public const int ScaleListener = 40;
-    public const int SlotIndex = 41;
-    public const int SlotIndexListener = 42;
-    public const int SlotsIndexer = 43;
-    public const int Speed = 44;
-    public const int SpeedListener = 45;
-    public const int Tag = 46;
-    public const int TagListener = 47;
-    public const int Thrower = 48;
-    public const int ThrowerListener = 49;
-    public const int ThrowerLoadedProjectile = 50;
-    public const int TriggerEnter2D = 51;
-    public const int TriggerEnter2DListener = 52;
-    public const int TriggerExit2D = 53;
-    public const int TriggerExit2DListener = 54;
-    public const int Up = 55;
-    public const int UpListener = 56;
+    public const int CoroutineRunner = 8;
+    public const int Destroyed = 9;
+    public const int DestroyedListener = 10;
+    public const int Direction = 11;
+    public const int DirectionListener = 12;
+    public const int Forward = 13;
+    public const int ForwardListener = 14;
+    public const int FreeProjectile = 15;
+    public const int GameEvent = 16;
+    public const int GameStarted = 17;
+    public const int Layer = 18;
+    public const int LayerListener = 19;
+    public const int LinkedView = 20;
+    public const int LinkedViewListener = 21;
+    public const int LoadedProjectile = 22;
+    public const int Movable = 23;
+    public const int MovableListener = 24;
+    public const int MovableRemovedListener = 25;
+    public const int Position = 26;
+    public const int PositionListener = 27;
+    public const int ProjectileBounceShield = 28;
+    public const int ProjectileBounceShieldListener = 29;
+    public const int Projectile = 30;
+    public const int ProjectileListener = 31;
+    public const int ReadyToLoad = 32;
+    public const int ReadyToLoadListener = 33;
+    public const int ReadyToThrow = 34;
+    public const int ReadyToThrowListener = 35;
+    public const int Right = 36;
+    public const int RightListener = 37;
+    public const int Rotation = 38;
+    public const int RotationListener = 39;
+    public const int Scale = 40;
+    public const int ScaleListener = 41;
+    public const int SlotIndex = 42;
+    public const int SlotIndexListener = 43;
+    public const int SlotsIndexer = 44;
+    public const int Speed = 45;
+    public const int SpeedListener = 46;
+    public const int Tag = 47;
+    public const int TagListener = 48;
+    public const int Thrower = 49;
+    public const int ThrowerListener = 50;
+    public const int ThrowerLoadedProjectile = 51;
+    public const int TriggerEnter2D = 52;
+    public const int TriggerEnter2DListener = 53;
+    public const int TriggerExit2D = 54;
+    public const int TriggerExit2DListener = 55;
+    public const int Up = 56;
+    public const int UpListener = 57;
 
-    public const int TotalComponents = 57;
+    public const int TotalComponents = 58;
 
     public static readonly string[] componentNames = {
         "AnyBalloonLineInstanceEventListener",
@@ -77,6 +78,7 @@ public static class GameComponentsLookup {
         "BalloonLineInstanceEvent",
         "Camera",
         "CameraListener",
+        "CoroutineRunner",
         "Destroyed",
         "DestroyedListener",
         "Direction",
@@ -137,6 +139,7 @@ public static class GameComponentsLookup {
         typeof(BalloonLineInstanceEventComponent),
         typeof(CameraComponent),
         typeof(CameraListenerComponent),
+        typeof(CoroutineRunnerComponent),
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
         typeof(DirectionComponent),
