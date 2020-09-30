@@ -11,72 +11,75 @@ public static class GameComponentsLookup {
     public const int AnyBalloonLineInstanceEventListener = 0;
     public const int AnyGameEventListener = 1;
     public const int AnyGameStartedListener = 2;
-    public const int Asset = 3;
-    public const int BalloonColor = 4;
-    public const int BalloonColorListener = 5;
-    public const int Balloon = 6;
-    public const int BalloonLastColorPopCount = 7;
-    public const int BalloonLastColorPopCountListener = 8;
-    public const int BalloonLineInstanceEvent = 9;
-    public const int Camera = 10;
-    public const int CameraListener = 11;
-    public const int CoroutineRunner = 12;
-    public const int Destroyed = 13;
-    public const int DestroyedListener = 14;
-    public const int Direction = 15;
-    public const int DirectionListener = 16;
-    public const int Forward = 17;
-    public const int ForwardListener = 18;
-    public const int FreeProjectile = 19;
-    public const int GameEvent = 20;
-    public const int GameStarted = 21;
-    public const int Layer = 22;
-    public const int LayerListener = 23;
-    public const int LinkedView = 24;
-    public const int LinkedViewListener = 25;
-    public const int LoadedProjectile = 26;
-    public const int Movable = 27;
-    public const int MovableListener = 28;
-    public const int MovableRemovedListener = 29;
-    public const int Position = 30;
-    public const int PositionListener = 31;
-    public const int ProjectileBounceShield = 32;
-    public const int ProjectileBounceShieldListener = 33;
-    public const int Projectile = 34;
-    public const int ProjectileListener = 35;
-    public const int ReadyToLoad = 36;
-    public const int ReadyToLoadListener = 37;
-    public const int ReadyToThrow = 38;
-    public const int ReadyToThrowListener = 39;
-    public const int Right = 40;
-    public const int RightListener = 41;
-    public const int Rotation = 42;
-    public const int RotationListener = 43;
-    public const int Scale = 44;
-    public const int ScaleListener = 45;
-    public const int SlotIndex = 46;
-    public const int SlotIndexListener = 47;
-    public const int SlotsIndexer = 48;
-    public const int Speed = 49;
-    public const int SpeedListener = 50;
-    public const int Tag = 51;
-    public const int TagListener = 52;
-    public const int Thrower = 53;
-    public const int ThrowerListener = 54;
-    public const int ThrowerLoadedProjectile = 55;
-    public const int TriggerEnter2D = 56;
-    public const int TriggerEnter2DListener = 57;
-    public const int TriggerExit2D = 58;
-    public const int TriggerExit2DListener = 59;
-    public const int Up = 60;
-    public const int UpListener = 61;
+    public const int AnyPlayParticleFXListener = 3;
+    public const int Asset = 4;
+    public const int BalloonColor = 5;
+    public const int BalloonColorListener = 6;
+    public const int Balloon = 7;
+    public const int BalloonLastColorPopCount = 8;
+    public const int BalloonLastColorPopCountListener = 9;
+    public const int BalloonLineInstanceEvent = 10;
+    public const int Camera = 11;
+    public const int CameraListener = 12;
+    public const int CoroutineRunner = 13;
+    public const int Destroyed = 14;
+    public const int DestroyedListener = 15;
+    public const int Direction = 16;
+    public const int DirectionListener = 17;
+    public const int Forward = 18;
+    public const int ForwardListener = 19;
+    public const int FreeProjectile = 20;
+    public const int GameEvent = 21;
+    public const int GameStarted = 22;
+    public const int Layer = 23;
+    public const int LayerListener = 24;
+    public const int LinkedView = 25;
+    public const int LinkedViewListener = 26;
+    public const int LoadedProjectile = 27;
+    public const int Movable = 28;
+    public const int MovableListener = 29;
+    public const int MovableRemovedListener = 30;
+    public const int PlayParticleFX = 31;
+    public const int Position = 32;
+    public const int PositionListener = 33;
+    public const int ProjectileBounceShield = 34;
+    public const int ProjectileBounceShieldListener = 35;
+    public const int Projectile = 36;
+    public const int ProjectileListener = 37;
+    public const int ReadyToLoad = 38;
+    public const int ReadyToLoadListener = 39;
+    public const int ReadyToThrow = 40;
+    public const int ReadyToThrowListener = 41;
+    public const int Right = 42;
+    public const int RightListener = 43;
+    public const int Rotation = 44;
+    public const int RotationListener = 45;
+    public const int Scale = 46;
+    public const int ScaleListener = 47;
+    public const int SlotIndex = 48;
+    public const int SlotIndexListener = 49;
+    public const int SlotsIndexer = 50;
+    public const int Speed = 51;
+    public const int SpeedListener = 52;
+    public const int Tag = 53;
+    public const int TagListener = 54;
+    public const int Thrower = 55;
+    public const int ThrowerListener = 56;
+    public const int ThrowerLoadedProjectile = 57;
+    public const int TriggerEnter2D = 58;
+    public const int TriggerEnter2DListener = 59;
+    public const int TriggerExit2D = 60;
+    public const int TriggerExit2DListener = 61;
+    public const int Up = 62;
+    public const int UpListener = 63;
 
-    public const int TotalComponents = 62;
+    public const int TotalComponents = 64;
 
     public static readonly string[] componentNames = {
         "AnyBalloonLineInstanceEventListener",
         "AnyGameEventListener",
         "AnyGameStartedListener",
+        "AnyPlayParticleFXListener",
         "Asset",
         "BalloonColor",
         "BalloonColorListener",
@@ -104,6 +107,7 @@ public static class GameComponentsLookup {
         "Movable",
         "MovableListener",
         "MovableRemovedListener",
+        "PlayParticleFX",
         "Position",
         "PositionListener",
         "ProjectileBounceShield",
@@ -142,6 +146,7 @@ public static class GameComponentsLookup {
         typeof(AnyBalloonLineInstanceEventListenerComponent),
         typeof(AnyGameEventListenerComponent),
         typeof(AnyGameStartedListenerComponent),
+        typeof(AnyPlayParticleFXListenerComponent),
         typeof(AssetComponent),
         typeof(BalloonColorComponent),
         typeof(BalloonColorListenerComponent),
@@ -169,6 +174,7 @@ public static class GameComponentsLookup {
         typeof(MovableComponent),
         typeof(MovableListenerComponent),
         typeof(MovableRemovedListenerComponent),
+        typeof(PlayParticleFXComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
         typeof(ProjectileBounceShieldComponent),

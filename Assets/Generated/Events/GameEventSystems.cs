@@ -22,6 +22,7 @@ public sealed class GameEventSystems : Feature {
         Add(new LinkedViewEventSystem(contexts)); // priority: 0
         Add(new MovableEventSystem(contexts)); // priority: 0
         Add(new MovableRemovedEventSystem(contexts)); // priority: 0
+        Add(new AnyPlayParticleFXEventSystem(contexts)); // priority: 0
         Add(new PositionEventSystem(contexts)); // priority: 0
         Add(new ProjectileEventSystem(contexts)); // priority: 0
         Add(new ProjectileBounceShieldEventSystem(contexts)); // priority: 0

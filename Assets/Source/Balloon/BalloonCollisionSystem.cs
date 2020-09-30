@@ -63,6 +63,10 @@ public class BalloonCollisionSystem : ReactiveSystem<GameEntity>
                         }
                     }
 
+                    var e = _contexts.game.CreateEntity();
+                    e.AddPosition(balloonEntity.position.Value);
+                    e.AddPlayParticleFX("PSVFX_BalloonPop");
+
                     balloonEntity.isDestroyed = true;
                 }
             }
