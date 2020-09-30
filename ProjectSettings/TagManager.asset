@@ -9,6 +9,8 @@ TagManager:
   - LimitBottom
   - LimitLeft
   - UICamera
+  - Balloons
+  - Projectile
   layers:
   - Default
   - TransparentFX
