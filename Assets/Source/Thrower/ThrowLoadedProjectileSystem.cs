@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Linq;
+using Entitas;
 using UnityEngine;
 
 public class ThrowLoadedProjectileSystem : IExecuteSystem
@@ -6,6 +7,7 @@ public class ThrowLoadedProjectileSystem : IExecuteSystem
     private readonly Contexts _contexts;
     private readonly IGameConfiguration _configuration;
     private readonly IGroup<GameEntity> _throwers;
+    private readonly IGroup<GameEntity> _balloons;
 
     public ThrowLoadedProjectileSystem(Contexts contexts)
     {
@@ -14,11 +16,15 @@ public class ThrowLoadedProjectileSystem : IExecuteSystem
 
         _throwers = _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Thrower, GameMatcher.Movable,
             GameMatcher.Direction, GameMatcher.ReadyToThrow, GameMatcher.ThrowerLoadedProjectile));
+        _balloons = _contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Balloon));
     }
 
     public void Execute()
     {
-        if (Input.GetMouseButtonUp(0))
+        // check if all current balloons are stable
+        var unstable = _balloons.AsEnumerable().Any(x => !x.isStableBalloon);
+
+        if (Input.GetMouseButtonUp(0) && !unstable)
         {
             foreach (var thrower in _throwers.GetEntities())
             {

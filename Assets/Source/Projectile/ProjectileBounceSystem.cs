@@ -29,24 +29,28 @@ public class ProjectileBounceSystem : IExecuteSystem
             if (position.y > _configuration.LimitsClockwise.x)
             {
                 reflect += Vector3.down;
+                position.y = _configuration.LimitsClockwise.x;
             }
 
             // right limit
             if (position.x > _configuration.LimitsClockwise.y)
             {
                 reflect += Vector3.left;
+                position.x = _configuration.LimitsClockwise.y;
             }
 
             // bottom limit
             if (position.y < _configuration.LimitsClockwise.z)
             {
                 reflect += Vector3.up;
+                position.y = _configuration.LimitsClockwise.z;
             }
 
             // left limit
             if (position.x < _configuration.LimitsClockwise.w)
             {
                 reflect += Vector3.right;
+                position.x = _configuration.LimitsClockwise.w;
             }
 
             // the projectile has bounced, consume a shield
@@ -64,6 +68,7 @@ public class ProjectileBounceSystem : IExecuteSystem
             }
 
             freeProjectile.ReplaceDirection(Vector2.Reflect(direction, reflect.normalized));
+            freeProjectile.ReplacePosition(position);
         }
 
 #if UNITY_EDITOR

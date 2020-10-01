@@ -72,6 +72,7 @@ public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>, ILinkedViewL
 
             positionTween.onUpdate += () => { entity.ReplacePosition(mono.transform.position); };
             scaleTween.onUpdate += () => { entity.ReplaceScale(mono.transform.localScale); };
+            positionTween.onComplete += () => { entity.isStableBalloon = true; };
         }
 
         entity.RemoveLinkedViewListener(this);

@@ -62,19 +62,20 @@ public static class GameComponentsLookup {
     public const int SlotsIndexer = 51;
     public const int Speed = 52;
     public const int SpeedListener = 53;
-    public const int Tag = 54;
-    public const int TagListener = 55;
-    public const int Thrower = 56;
-    public const int ThrowerListener = 57;
-    public const int ThrowerLoadedProjectile = 58;
-    public const int TriggerEnter2D = 59;
-    public const int TriggerEnter2DListener = 60;
-    public const int TriggerExit2D = 61;
-    public const int TriggerExit2DListener = 62;
-    public const int Up = 63;
-    public const int UpListener = 64;
+    public const int StableBalloon = 54;
+    public const int Tag = 55;
+    public const int TagListener = 56;
+    public const int Thrower = 57;
+    public const int ThrowerListener = 58;
+    public const int ThrowerLoadedProjectile = 59;
+    public const int TriggerEnter2D = 60;
+    public const int TriggerEnter2DListener = 61;
+    public const int TriggerExit2D = 62;
+    public const int TriggerExit2DListener = 63;
+    public const int Up = 64;
+    public const int UpListener = 65;
 
-    public const int TotalComponents = 65;
+    public const int TotalComponents = 66;
 
     public static readonly string[] componentNames = {
         "AnyBalloonLineInstanceEventListener",
@@ -131,6 +132,7 @@ public static class GameComponentsLookup {
         "SlotsIndexer",
         "Speed",
         "SpeedListener",
+        "StableBalloon",
         "Tag",
         "TagListener",
         "Thrower",
@@ -199,6 +201,7 @@ public static class GameComponentsLookup {
         typeof(SlotsIndexerComponent),
         typeof(SpeedComponent),
         typeof(SpeedListenerComponent),
+        typeof(StableBalloonComponent),
         typeof(TagComponent),
         typeof(TagListenerComponent),
         typeof(ThrowerComponent),

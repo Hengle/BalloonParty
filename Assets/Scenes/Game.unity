@@ -1549,6 +1549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystems:
   - {fileID: 2148469744637963286, guid: 4a7c3a51e0404c1479c70235419a474d, type: 3}
+  - {fileID: 1947199329108356482, guid: 6e855a2c07caa6547947b364836193df, type: 3}
+  - {fileID: 1947199329108356482, guid: 516e7764d4ea40f4d96d54dbce951fa6, type: 3}
 --- !u!1 &1127255597
 GameObject:
   m_ObjectHideFlags: 0

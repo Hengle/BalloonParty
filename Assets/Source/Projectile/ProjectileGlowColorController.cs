@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine;
 
 [RequireComponent(typeof(LinkedViewController))]
-public class BalloonColorController : MonoBehaviour, IBalloonColorListener
+public class ProjectileGlowColorController : MonoBehaviour, IBalloonColorListener
 {
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private SpriteRenderer _shadowRenderer;
-    [SerializeField, Range(0f, 1f)] private float _shadowAlpha;
+    [SerializeField, Range(0f, 1f)] private float _alpha;
+    [SerializeField] private float _colorDuration;
 
     private LinkedViewController _linkedView;
 
@@ -18,19 +20,14 @@ public class BalloonColorController : MonoBehaviour, IBalloonColorListener
     private void OnViewLinked(GameEntity gameEntity)
     {
         gameEntity.AddBalloonColorListener(this);
-        OnBalloonColor(gameEntity, gameEntity.balloonColor.Value);
     }
 
     public void OnBalloonColor(GameEntity entity, Color value)
     {
         if (_renderer != null)
         {
-            _renderer.color = value;
-        }
-
-        if (_shadowRenderer != null)
-        {
-            _shadowRenderer.color = new Color(value.r, value.g, value.b, _shadowAlpha);
+            var targetColor = new Color(value.r, value.g, value.b, _alpha);
+            _renderer.DOColor(targetColor, _colorDuration);
         }
     }
 }
