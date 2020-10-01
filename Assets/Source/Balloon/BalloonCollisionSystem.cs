@@ -65,6 +65,7 @@ public class BalloonCollisionSystem : ReactiveSystem<GameEntity>
 
                     var e = _contexts.game.CreateEntity();
                     e.AddPosition(balloonEntity.position.Value);
+                    e.AddParticleFXStartColor(balloonEntity.balloonColor.Value);
                     e.AddPlayParticleFX("PSVFX_BalloonPop");
 
                     balloonEntity.isDestroyed = true;
