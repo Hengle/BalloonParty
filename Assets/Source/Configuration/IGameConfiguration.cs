@@ -11,7 +11,7 @@ public interface IGameConfiguration
     Vector2Int SlotsSize { get; }
     Vector2 SlotSeparation { get; }
     Vector2 SlotsOffset { get; }
-    Vector2 BalloonSpawnAnimationSpeedRange { get; }
+    Vector2 BalloonSpawnAnimationDurationRange { get; }
     float GameStartedBalloonLinesTimeInterval { get; }
     int GameStartedBalloonLines { get; }
 

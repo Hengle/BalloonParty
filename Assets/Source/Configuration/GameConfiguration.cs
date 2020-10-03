@@ -27,7 +27,7 @@ public class GameConfiguration : ScriptableObject, IGameConfiguration
     public Vector2 SlotSeparation => _slotSeparation;
     public Vector2 SlotsOffset => _slotsOffset;
     public Vector2Int SlotsSize => _slotsSize;
-    public Vector2 BalloonSpawnAnimationSpeedRange => _balloonSpawnAnimationSpeedRange;
+    public Vector2 BalloonSpawnAnimationDurationRange => _balloonSpawnAnimationSpeedRange;
 
     public float GameStartedBalloonLinesTimeInterval => _gameStartedBalloonLinesTimeInterval;
 

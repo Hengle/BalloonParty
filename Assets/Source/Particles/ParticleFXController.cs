@@ -22,13 +22,30 @@ public class ParticleFXController : MonoBehaviour, IAnyPlayParticleFXListener
         {
             var position = entity.hasPosition ? entity.position.Value : Vector3.zero;
             var rotation = entity.hasRotation ? entity.rotation.Value : Quaternion.identity;
+            ParticleSystem ps = null;
 
-            var ps = Instantiate(_particleSystems[indexOf], position, rotation, transform);
-            ParticleSystem.MainModule main = ps.main;
-
-            if (entity.hasParticleFXStartColor)
+            if (!entity.hasParticleFXParent)
             {
-                main.startColor = entity.particleFXStartColor.Value;
+                ps = Instantiate(_particleSystems[indexOf], position, rotation, transform);
+            }
+            else
+            {
+                var parent = entity.particleFXParent.Value as MonoBehaviour;
+
+                if (parent != null)
+                {
+                    ps = Instantiate(_particleSystems[indexOf], parent.transform, false);
+                }
+            }
+
+            if (ps != null)
+            {
+                ParticleSystem.MainModule main = ps.main;
+
+                if (entity.hasParticleFXStartColor)
+                {
+                    main.startColor = entity.particleFXStartColor.Value;
+                }
             }
         }
     }

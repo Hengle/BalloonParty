@@ -56,13 +56,38 @@ public class ProjectileBounceSystem : IExecuteSystem
             // the projectile has bounced, consume a shield
             if (reflect != Vector3.zero)
             {
+                // play bounce particle fx
+                var bounce = _contexts.game.CreateEntity();
+                bounce.AddPosition(position);
+                bounce.AddPlayParticleFX("PSVFX_ShieldBounce");
+
+                if (freeProjectile.hasBalloonColor)
+                {
+                    bounce.AddParticleFXStartColor(freeProjectile.balloonColor.Value);
+                }
+
                 if (shield > 0)
                 {
                     freeProjectile.ReplaceProjectileBounceShield(shield - 1);
+
+                    // play particle fx
+                    var e = _contexts.game.CreateEntity();
+                    e.AddParticleFXParent(freeProjectile.linkedView.Value);
+                    e.AddPlayParticleFX("PSVFX_ShieldLose");
+
+                    if (freeProjectile.hasBalloonColor)
+                    {
+                        e.AddParticleFXStartColor(freeProjectile.balloonColor.Value);
+                    }
                 }
                 else
                 {
                     freeProjectile.isDestroyed = true;
+
+                    // check if balloons can be moved to re-balance
+                    var e = _contexts.game.CreateEntity();
+                    e.isBalloonsBalanceEvent = true;
+
                     continue;
                 }
             }

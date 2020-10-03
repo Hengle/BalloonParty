@@ -64,8 +64,8 @@ public class BalloonLineSpawnerSystem : ReactiveSystem<GameEntity>, ILinkedViewL
 
         if (mono != null)
         {
-            var time = Random.Range(_configuration.BalloonSpawnAnimationSpeedRange.x,
-                _configuration.BalloonSpawnAnimationSpeedRange.y);
+            var time = Random.Range(_configuration.BalloonSpawnAnimationDurationRange.x,
+                _configuration.BalloonSpawnAnimationDurationRange.y);
 
             var positionTween = mono.transform.DOMove(entity.slotIndex.Value.IndexToPosition(_configuration), time);
             var scaleTween = mono.transform.DOScale(Vector3.one, time);

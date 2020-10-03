@@ -17,6 +17,7 @@ public class GameUpdateSystems : Feature
         Add(new ThrowLoadedProjectileSystem(contexts));
         Add(new FreeProjectileMovementSystem(contexts));
         Add(new ProjectileBounceSystem(contexts));
+        Add(new BalanceBalloonsSystem(contexts));
 
         // events
         Add(new GameEventSystems(contexts));

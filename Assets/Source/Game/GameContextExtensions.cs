@@ -1,4 +1,5 @@
 using System.Collections;
+using Entitas;
 using UnityEngine;
 
 public static class GameContextExtensions
@@ -32,5 +33,30 @@ public static class GameContextExtensions
         );
 
         return position;
+    }
+
+    public static bool IsEmpty(this IEntity[,] slots, int i, int j)
+    {
+        return slots[i, j] == null || !slots[i, j].isEnabled || !((GameEntity) slots[i, j]).isBalloon;
+    }
+
+    public static bool IsUnbalanced(this IEntity[,] slots, int i, int j)
+    {
+        if (j < 0 || i < 0) throw new System.ArgumentException("Invalid argument for index values");
+
+        if (j == 0) return false;
+
+        // border cases
+        if (i == 0 || i == slots.GetLength(0) - 1)
+        {
+            return slots.IsEmpty(i, j - 1);
+        }
+
+        if (i < slots.GetLength(0) && j < slots.GetLength(1))
+        {
+            return slots.IsEmpty(i, j - 1) || slots.IsEmpty(i + 1, j - 1);
+        }
+
+        return true;
     }
 }

@@ -6,11 +6,13 @@ public class BalloonCollisionSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
     private readonly int _layer;
+    private IEntity[,] _slots;
 
     public BalloonCollisionSystem(Contexts contexts) : base(contexts.game)
     {
         _contexts = contexts;
         _layer = LayerMask.NameToLayer("Balloons");
+        _slots = _contexts.game.slotsIndexer.Value;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -55,6 +57,17 @@ public class BalloonCollisionSystem : ReactiveSystem<GameEntity>
                             {
                                 var shields = gameEntity.projectileBounceShield.Value;
                                 gameEntity.ReplaceProjectileBounceShield(shields + 1);
+
+                                // play particle fx
+                                var gain = _contexts.game.CreateEntity();
+                                gain.AddParticleFXParent(gameEntity.linkedView.Value);
+                                gain.AddPlayParticleFX("PSVFX_ShieldGain");
+
+                                if (gameEntity.hasBalloonColor)
+                                {
+                                    gain.AddParticleFXStartColor(gameEntity.balloonColor.Value);
+                                }
+
                             }
                         }
                         else
@@ -63,11 +76,17 @@ public class BalloonCollisionSystem : ReactiveSystem<GameEntity>
                         }
                     }
 
+                    // create balloon pop effect
                     var e = _contexts.game.CreateEntity();
                     e.AddPosition(balloonEntity.position.Value);
                     e.AddParticleFXStartColor(balloonEntity.balloonColor.Value);
                     e.AddPlayParticleFX("PSVFX_BalloonPop");
 
+                    // remove from indexer
+                    var index = balloonEntity.slotIndex.Value;
+                    _slots[index.x, index.y] = null;
+
+                    // destroy
                     balloonEntity.isDestroyed = true;
                 }
             }
