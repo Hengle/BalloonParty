@@ -54,7 +54,7 @@ public static class GameContextExtensions
 
         if (i < slots.GetLength(0) && j < slots.GetLength(1))
         {
-            return slots.IsEmpty(i, j - 1) || slots.IsEmpty(i + 1, j - 1);
+            return slots.IsEmpty(i, j - 1) || slots.IsEmpty(i + (i % 2 == 0 ? -1 : 1), j - 1);
         }
 
         return true;
