@@ -46,17 +46,15 @@ public static class GameContextExtensions
 
         if (j == 0) return false;
 
-        // border cases
-        if (i == 0 || i == slots.GetLength(0) - 1)
+        if (slots.IsEmpty(i, j - 1)) return true;
+
+        var index = i + (j % 2 == 0 ? -1 : 1);
+
+        if (index > 0 && index < slots.GetLength(0))
         {
-            return slots.IsEmpty(i, j - 1);
+            return slots.IsEmpty(index, j - 1);
         }
 
-        if (i < slots.GetLength(0) && j < slots.GetLength(1))
-        {
-            return slots.IsEmpty(i, j - 1) || slots.IsEmpty(i + (i % 2 == 0 ? -1 : 1), j - 1);
-        }
-
-        return true;
+        return false;
     }
 }
