@@ -16,4 +16,5 @@ public interface IGameConfiguration
     int GameStartedBalloonLines { get; }
 
     Color[] BalloonColors { get; }
+    float TimeForBalloonsBalance { get;}
 }

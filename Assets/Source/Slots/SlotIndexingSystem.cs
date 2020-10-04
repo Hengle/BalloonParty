@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Adds new slot instances to the indexer entity
 /// </summary>
-public class SloIndexerSystem : ReactiveSystem<GameEntity>, IDestroyedListener
+public class SloIndexerSystem : ReactiveSystem<GameEntity>
 {
     private readonly IGameConfiguration _configuration;
     private readonly Contexts _contexts;
@@ -40,17 +40,6 @@ public class SloIndexerSystem : ReactiveSystem<GameEntity>, IDestroyedListener
             var val = gameEntity.slotIndex.Value;
             _indexerEntity.slotsIndexer.Value[val.x, val.y] = gameEntity;
 
-            // in case its destroyed
-            gameEntity.AddDestroyedListener(this);
         }
-    }
-
-    /// <summary>
-    /// Cleans up the indexer reference when the entity is destroyed
-    /// </summary>
-    /// <param name="entity"></param>
-    public void OnDestroyed(GameEntity entity)
-    {
-        
     }
 }

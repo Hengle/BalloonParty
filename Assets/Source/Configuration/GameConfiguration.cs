@@ -19,6 +19,7 @@ public class GameConfiguration : ScriptableObject, IGameConfiguration
     [SerializeField] private float _gameStartedBalloonLinesTimeInterval;
     [SerializeField] private int _gameStartedBalloonLines;
     [SerializeField] private Color[] _balloonColors;
+    [SerializeField] private float _timeForBalloonsBalance;
 
     public Vector2 ThrowerSpawnPoint => _throwerSpawnPoint;
     public Vector2 ProjectileSpawnPoint => _projectileSpawnPoint;
@@ -34,4 +35,6 @@ public class GameConfiguration : ScriptableObject, IGameConfiguration
     public int GameStartedBalloonLines => _gameStartedBalloonLines;
 
     public Color[] BalloonColors => _balloonColors;
+
+    public float TimeForBalloonsBalance => _timeForBalloonsBalance;
 }

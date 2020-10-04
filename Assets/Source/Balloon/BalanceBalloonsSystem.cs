@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Entitas;
+using TMPro;
 using UnityEngine;
 
 public class BalanceBalloonsSystem : ReactiveSystem<GameEntity>
@@ -27,23 +29,61 @@ public class BalanceBalloonsSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        for (int i = 0; i < _slots.GetLength(0); i++)
+        var hasUnbalanced = true;
+        var paths = new Dictionary<GameEntity, List<Vector3>>();
+
+        while (hasUnbalanced)
         {
-            for (int j = _slots.GetLength(1) - 1; j >= 0; j--)
+            hasUnbalanced = false;
+
+            for (int i = 0; i < _slots.GetLength(0); i++)
             {
-                var isEmpty = _slots.IsEmpty(i, j);
-
-                if (!isEmpty)
+                for (int j = _slots.GetLength(1) - 1; j >= 0; j--)
                 {
-                    var isUnbalanced = _slots.IsUnbalanced(i, j);
+                    if (_slots.IsEmpty(i, j)) continue;
+                    if (!(_slots[i, j] is GameEntity balloonEntity)) continue;
+                    if (!_slots.IsUnbalanced(i, j)) continue;
 
-                    if (isUnbalanced)
+                    var nextSlot = _slots.OptimalNextEmptySlot(i, j);
+
+                    if (!nextSlot.HasValue) continue;
+
+                    hasUnbalanced = true;
+
+                    // swap index values
+                    _slots[i, j] = null;
+                    _slots[nextSlot.Value.x, nextSlot.Value.y] = balloonEntity;
+                    balloonEntity.ReplaceSlotIndex(nextSlot.Value);
+
+                    // save to movement path animation
+                    if (paths.TryGetValue(balloonEntity, out var path))
                     {
-                        var balloonEntity = _slots[i, j] as GameEntity;
-                        balloonEntity.ReplaceBalloonColor(Color.yellow);
-                        Debug.Log(i + ", " + j);
+                        path.Add(nextSlot.Value.IndexToPosition(_configuration));
+                    }
+                    else
+                    {
+                        paths.Add(balloonEntity, new List<Vector3>()
+                        {
+                            nextSlot.Value.IndexToPosition(_configuration)
+                        });
                     }
                 }
+            }
+        }
+
+        foreach (var path in paths)
+        {
+            var mono = path.Key.linkedView.Value as MonoBehaviour;
+
+            if (mono != null)
+            {
+                var tween = mono.transform.DOPath(path.Value.ToArray(), _configuration.TimeForBalloonsBalance, PathType.CatmullRom);
+                var entity = path.Key;
+
+                tween.onUpdate += () =>
+                {
+                    entity.ReplacePosition(mono.transform.position);
+                };
             }
         }
     }
